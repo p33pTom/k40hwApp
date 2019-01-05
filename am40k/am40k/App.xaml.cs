@@ -11,12 +11,16 @@ namespace am40k
     public partial class App : Application
 	{
         Database database = new Database();
+        DeathWatchUnitsDataSetup deathWatchUnitsData = new DeathWatchUnitsDataSetup();
 
         public App ()
 		{
-			InitializeComponent();
-			MainPage = new MainPage();
             database.CreateDatabase();
+            deathWatchUnitsData.DeathWatchUnitsHQSetup();
+            InitializeComponent();
+			MainPage = new MainPage();
+            
+            
 		}
 
 		protected override void OnStart ()

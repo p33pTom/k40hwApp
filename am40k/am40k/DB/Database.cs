@@ -29,7 +29,25 @@ namespace am40k
                 Log.Info("SQLiteEx", ex.Message);
                 return false;
             }
-        }       
+        }
+
+        public List<Unit> GetArmies()
+        {
+            try
+            {
+                using (var conn = new SQLiteConnection(System.IO.Path.Combine(DbFolder, DbName)))
+                {
+                    var ArmiesList = conn.Query<Unit>("Select Army FROM Unit");
+                    return ArmiesList;
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                Log.Error("SQLiteEX", ex.Message);
+                return null;
+            }
+
+        }
 
         public List<Unit> GetUnitNames ()
         {
@@ -47,7 +65,5 @@ namespace am40k
                 return null;
             }
         }
-
-
     }
 }

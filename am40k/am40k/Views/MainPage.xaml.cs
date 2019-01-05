@@ -10,17 +10,24 @@ namespace am40k
 
         public MainPage()
         {
-
             var ArmyPicker = new Picker { Title = "Select an army..." };
-
             var UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
+            UnitPicker.Items.Clear();
+            var Armies = database.GetArmies();
+            foreach (Unit unit in Armies)
+            {
+                ArmyPicker.Items.Add(unit.ArmyOf);
+            }
 
             //Add Unit BUTTON
             Button AddButton = new Button
             {
                 Text = "Add Unit"
             };
-           
+            
+            //populate Army picker.
+
+
             //populate Unit picker.
             ArmyPicker.SelectedIndexChanged += (sender, e) =>
             {
