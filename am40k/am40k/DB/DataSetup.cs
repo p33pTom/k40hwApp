@@ -6,5 +6,6 @@ namespace am40k.DB
 {
     class DataSetup
     {
+
     }
 }

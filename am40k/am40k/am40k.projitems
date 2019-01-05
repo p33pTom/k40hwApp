@@ -20,14 +20,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Army.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ArmyData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Unit.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ArmiesPage.xaml.cs">
-      <DependentUpon>ArmiesPage.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ArmiesPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
