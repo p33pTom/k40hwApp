@@ -10,8 +10,8 @@ namespace am40k
         public Database() {}
 
         // DB PATH:
-        readonly string DbName = "40k01";
-        readonly string DbFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+        public string DbName = "40k01";
+        public string DbFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
         //CREATE DB AND UNIT TABLE
         public bool CreateDatabase()
@@ -46,7 +46,6 @@ namespace am40k
                 Log.Error("SQLiteEX", ex.Message);
                 return null;
             }
-
         }
 
 

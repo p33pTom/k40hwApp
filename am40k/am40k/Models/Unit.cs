@@ -21,7 +21,7 @@ namespace am40k
 
         public string Description { get; set; }
 
-        [NotNull]
+        //[NotNull]
         public int ModelsInUnit { get; set; }
 
         public int Movement { get; set; }
@@ -36,7 +36,7 @@ namespace am40k
 
         public int InvulnerableSave { get; set; }
 
-        [NotNull]
+        //[NotNull]
         public bool Psyker { get; set; }
 
         [NotNull]
