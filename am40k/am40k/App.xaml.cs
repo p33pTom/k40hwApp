@@ -17,7 +17,6 @@ namespace am40k
 			InitializeComponent();
 			MainPage = new MainPage();
             database.CreateDatabase();
-            database.SetupData();
 		}
 
 		protected override void OnStart ()

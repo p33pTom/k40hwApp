@@ -15,10 +15,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)DB\Database.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DB\DataSetup.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Army.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\ArmyData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)db\Database.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataSetup\DeathWatchUnitsDataSetup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Unit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -30,5 +28,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)DataSetup\" />
   </ItemGroup>
 </Project>

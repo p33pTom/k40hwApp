@@ -6,7 +6,6 @@ namespace am40k
     public partial class MainPage : ContentPage
 	{
         Database database = new Database();
-        List<Army> Armies = new List<Army>(); 
         List<Unit> Units = new List<Unit>();
 
         public MainPage()
