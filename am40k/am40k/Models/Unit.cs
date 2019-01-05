@@ -1,12 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using SQLite;
-using System.Linq;
-using System.Linq.Expressions;
-using SQLitePCL;
+﻿using SQLite;
 
 namespace am40k
 {
@@ -38,12 +30,6 @@ namespace am40k
         public int Leadership { get; set; }
         public int Save { get; set; }
 
-        //public List<string> Weapon { get; set; }
-        //public List<string> Abilities { get; set; }
-
-        public int Psyker { get; set; }
-
-        //public List<string> FactionKeywords { get; set; }
-        //public List<string> Keywords { get; set; }
+        public bool Psyker { get; set; }
     }
 }
