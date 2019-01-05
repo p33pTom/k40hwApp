@@ -10,8 +10,8 @@ namespace am40k
         public Database() {}
 
         //TEST DATA
-        readonly string DraigoQuery = "INSERT INTO Unit (UnitShortName, UnitCaption, Name, Type) VALUES ('LKD', 'Draigo', 'Kaldor Draigo', 'HQ')";
-        private readonly string DreadQuery = "INSERT INTO Unit (UnitShortName, UnitCaption, Name, Type) VALUES ('ND', 'Dreadknight', 'Nemesis Dreadknight', 'HQ')";
+        //readonly string DraigoQuery = "INSERT INTO Unit (UnitShortName, UnitCaption, Name, Type) VALUES ('LKD', 'Draigo', 'Kaldor Draigo', 'HQ')";
+        //private readonly string DreadQuery = "INSERT INTO Unit (UnitShortName, UnitCaption, Name, Type) VALUES ('ND', 'Dreadknight', 'Nemesis Dreadknight', 'HQ')";
         //TEST DATA
 
         // DB PATH:
