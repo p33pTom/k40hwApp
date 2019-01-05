@@ -11,7 +11,7 @@ namespace am40k
 
         public MainPage()
         {
-            InitializeComponent();
+            //InitializeComponent();
 
             var ArmyPicker = new Picker { Title = "Select an army..." };
             ArmyPicker.SetBinding(Picker.ItemsSourceProperty, "Armies");
