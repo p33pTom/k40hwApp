@@ -11,21 +11,18 @@ namespace am40k
 
         public MainPage()
         {
-            //InitializeComponent();
 
             var ArmyPicker = new Picker { Title = "Select an army..." };
-            ArmyPicker.SetBinding(Picker.ItemsSourceProperty, "Armies");
-            ArmyPicker.SetBinding(Picker.SelectedItemProperty, "SelectedArmy");
-            ArmyPicker.ItemDisplayBinding = new Binding("ArmyCaption");
 
             var UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
 
             //Add Unit BUTTON
             Button AddButton = new Button
             {
-                Text = "Add"
+                Text = "Add Unit"
             };
            
+            //populate Unit picker.
             ArmyPicker.SelectedIndexChanged += (sender, e) =>
             {
                 UnitPicker.IsVisible = true;
@@ -38,7 +35,6 @@ namespace am40k
                     }
                 }
             };
-
 
             //Create page content
             Content = new ScrollView
