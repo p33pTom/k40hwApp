@@ -26,10 +26,7 @@ namespace am40k
                 Text = "Add"
             };
 
-            Button AddButton2 = new Button
-            {
-                Text = "Add2"
-            };
+            
 
             ArmyPicker.SelectedIndexChanged += (sender, e) =>
             {
