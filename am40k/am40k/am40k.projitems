@@ -17,8 +17,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)DB\Database.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DB\DataSetup.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Army.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\ArmyData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Unit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
