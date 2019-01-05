@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{C5D81420-DEFA-44FC-B68F-D939B507E63C}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>am40k</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)DB\Database.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DB\DataSetup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Army.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ArmyData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Unit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ArmiesPage.xaml.cs">
+      <DependentUpon>ArmiesPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ArmiesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
