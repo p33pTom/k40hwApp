@@ -8,16 +8,20 @@ namespace am40k
         public Unit() { }
 
         [PrimaryKey, AutoIncrement]
-        public int UnitId { get; set; }
-        public int UnitArmyId { get; set; }
+        public int Id { get; set; }
 
-        public string UnitShortName { get; set; }
-        public string UnitCaption { get; set; }
+        [Unique, NotNull]
+        public string Caption { get; set; }
 
+        [NotNull]
         public string Name { get; set; }
-        public string FullName { get; set; }
+
+        [NotNull]
         public string Type { get; set; }
+
         public string Description { get; set; }
+
+        [NotNull]
         public int ModelsInUnit { get; set; }
 
         public int Movement { get; set; }
@@ -30,6 +34,12 @@ namespace am40k
         public int Leadership { get; set; }
         public int Save { get; set; }
 
+        public int InvulnerableSave { get; set; }
+
+        [NotNull]
         public bool Psyker { get; set; }
+
+        [NotNull]
+        public string ArmyOf { get; set; }
     }
 }
