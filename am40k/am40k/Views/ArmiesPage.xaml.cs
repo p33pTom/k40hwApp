@@ -20,17 +20,12 @@ namespace am40k
 
             var UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
 
-
+            //Add Unit BUTTON
             Button AddButton = new Button
             {
                 Text = "Add"
             };
-
-            Button AddButton2 = new Button
-            {
-                Text = "Add2"
-            };
-
+           
             ArmyPicker.SelectedIndexChanged += (sender, e) =>
             {
                 UnitPicker.IsVisible = true;
