@@ -10,14 +10,23 @@ namespace am40k
 
         public MainPage()
         {
-            var ArmyPicker = new Picker { Title = "Select an army..." };
-            var UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
-            UnitPicker.Items.Clear();
             var Armies = database.GetArmies();
+            var ArmyPicker = new Picker { Title = "Select an army...", };
             foreach (Unit unit in Armies)
             {
                 ArmyPicker.Items.Add(unit.ArmyOf);
             }
+            
+            //Unit Picker
+            var UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
+
+            //LAUNCH BUTTON
+            Button Launch = new Button
+            {
+                Text = "LAUNCH THE SHIT",
+                CornerRadius = 10,
+                BorderWidth = 2,
+            };
 
             //Add Unit BUTTON
             Button AddButton = new Button
@@ -25,9 +34,7 @@ namespace am40k
                 Text = "Add Unit"
             };
             
-            //populate Army picker.
-
-
+            
             //populate Unit picker.
             ArmyPicker.SelectedIndexChanged += (sender, e) =>
             {
@@ -41,6 +48,7 @@ namespace am40k
                     }
                 }
             };
+            
 
             //Create page content
             Content = new ScrollView
@@ -50,10 +58,11 @@ namespace am40k
                     Margin = new Thickness(20),
                     Children =
                     {
-                        new Label {Text = "Armies:", FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.Center},
+                        new Label {Text = "YOBA? ETO TI?", FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.Center},
                         ArmyPicker ,
                         UnitPicker,
-                        AddButton
+                        AddButton,
+                        Launch
                     }
                 }                              
             };

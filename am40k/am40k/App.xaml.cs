@@ -15,27 +15,14 @@ namespace am40k
 
         public App ()
 		{
-            database.CreateDatabase();
-            deathWatchUnitsData.DeathWatchUnitsHQSetup();
             InitializeComponent();
-			MainPage = new MainPage();
-            
-            
+            database.CreateDatabase();
+            deathWatchUnitsData.DeathWatchUnitsSetup();
+            MainPage = new MainPage();  
 		}
 
-		protected override void OnStart ()
-		{
-			// Handle when your app starts
-		}
-
-		protected override void OnSleep ()
-		{
-			// Handle when your app sleeps
-		}
-
-		protected override void OnResume ()
-		{
-			// Handle when your app resumes
-		} 
+		protected override void OnStart (){}
+		protected override void OnSleep (){}
+		protected override void OnResume (){} 
     }
 }
