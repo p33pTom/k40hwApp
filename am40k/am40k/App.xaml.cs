@@ -12,11 +12,12 @@ namespace am40k
 
         public App ()
 		{
+            MainPage = new MainPage();
+            ContentPage RosterPage = new ContentPage();
             InitializeComponent();
             database.CreateDatabase();
             deathWatchUnitsData.DeathWatchUnitsSetup();
-            MainPage = new MainPage();
-            //NavigationPage RosterPage = new NavigationPage(new RosterPage());
+            
 		}
 
 		protected override void OnStart (){}

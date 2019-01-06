@@ -34,7 +34,7 @@ namespace am40k
                 Text = "GO TO ROSTER PAGE"
             };
 
-            AddButton.Clicked += AddButton_Clicked;
+            RosterPageButton.Clicked += RosterPageButton_Clicked;
                 
             //populate Unit picker.
             ArmyPicker.SelectedIndexChanged += (sender, e) =>
@@ -66,11 +66,12 @@ namespace am40k
                 }                              
             };
         }
-
-        private async void AddButton_Clicked(object sender, System.EventArgs e)
+        
+        private void RosterPageButton_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(RosterPage);
-        }       
+            Navigation.PushModalAsync(new RosterPage());
+        }
+        
     }
 }
  

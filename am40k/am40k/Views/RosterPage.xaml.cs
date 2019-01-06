@@ -5,8 +5,8 @@ namespace am40k
     public partial class RosterPage : ContentPage
     {
 
-        MainPage MainPage = new MainPage();
-        Database Database = new Database();
+        //MainPage MainPage = new MainPage();
+        //Database Database = new Database();
 
         public RosterPage()
         {
@@ -14,6 +14,7 @@ namespace am40k
             {
                 Text = "Back to Main Page"
             };
+            BackToMainPageButton.Clicked += BackToMainPageButton_Clicked;
 
             //Create page content
             Content = new ScrollView
@@ -28,6 +29,11 @@ namespace am40k
                     }
                 }
             };
+        }
+
+        private void BackToMainPageButton_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushModalAsync(new MainPage());
         }
     }
 }
