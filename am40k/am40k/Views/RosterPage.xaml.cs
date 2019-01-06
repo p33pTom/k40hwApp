@@ -2,18 +2,20 @@
 
 namespace am40k
 {
-	public class RosterPage : ContentPage
-	{
-        readonly MainPage MainPage = new MainPage();
-        readonly Database Database = new Database();
+    public partial class RosterPage : ContentPage
+    {
 
-        public RosterPage ()
-		{
+        MainPage MainPage = new MainPage();
+        Database Database = new Database();
+
+        public RosterPage()
+        {
             Button BackToMainPageButton = new Button()
             {
                 Text = "Back to Main Page"
             };
 
+            //Create page content
             Content = new ScrollView
             {
                 Content = new StackLayout
@@ -21,11 +23,11 @@ namespace am40k
                     Margin = new Thickness(20),
                     Children =
                     {
-                        new Label {Text = "ROSTERS YOBA!", FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.Center},
+                        new Label {Text = "ROSTER YOBA!!!", FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.Center},
                         BackToMainPageButton
                     }
                 }
             };
         }
-	}
+    }
 }

@@ -28,6 +28,12 @@ namespace am40k
                 Text = "Add Unit"
             };
 
+            //ROSTER PAGE BUTTON
+            Button RosterPageButton = new Button
+            {
+                Text = "GO TO ROSTER PAGE"
+            };
+
             AddButton.Clicked += AddButton_Clicked;
                 
             //populate Unit picker.
@@ -54,7 +60,8 @@ namespace am40k
                         new Label {Text = "YOBA? ETO TI?", FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.Center},
                         ArmyPicker ,
                         UnitPicker,
-                        AddButton
+                        AddButton,
+                        RosterPageButton
                     }
                 }                              
             };
@@ -62,8 +69,8 @@ namespace am40k
 
         private async void AddButton_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new RosterPage());
-        }
+            await Navigation.PushAsync(RosterPage);
+        }       
     }
 }
  

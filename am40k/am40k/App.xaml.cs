@@ -13,14 +13,13 @@ namespace am40k
         public App ()
 		{
             InitializeComponent();
-            MainPage = new MainPage();
-		}
-
-		protected override void OnStart ()
-        {
             database.CreateDatabase();
             deathWatchUnitsData.DeathWatchUnitsSetup();
-        }
+            MainPage = new MainPage();
+            //NavigationPage RosterPage = new NavigationPage(new RosterPage());
+		}
+
+		protected override void OnStart (){}
 		protected override void OnSleep (){}
 		protected override void OnResume (){}
     }
