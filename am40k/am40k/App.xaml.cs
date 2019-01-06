@@ -12,15 +12,15 @@ namespace am40k
 
         public App ()
 		{
-            InitializeComponent();
             MainPage = new MainPage();
-		}
-
-		protected override void OnStart ()
-        {
+            ContentPage RosterPage = new ContentPage();
+            InitializeComponent();
             database.CreateDatabase();
             deathWatchUnitsData.DeathWatchUnitsSetup();
-        }
+            
+		}
+
+		protected override void OnStart (){}
 		protected override void OnSleep (){}
 		protected override void OnResume (){}
     }

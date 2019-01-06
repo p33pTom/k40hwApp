@@ -7,6 +7,7 @@ namespace am40k
 	{
         Database database = new Database();
         List<Unit> Units = new List<Unit>();
+        RosterPage RosterPage = new RosterPage();
 
         public MainPage()
         {
@@ -26,6 +27,14 @@ namespace am40k
             {
                 Text = "Add Unit"
             };
+
+            //ROSTER PAGE BUTTON
+            Button RosterPageButton = new Button
+            {
+                Text = "GO TO ROSTER PAGE"
+            };
+
+            RosterPageButton.Clicked += RosterPageButton_Clicked;
                 
             //populate Unit picker.
             ArmyPicker.SelectedIndexChanged += (sender, e) =>
@@ -51,11 +60,18 @@ namespace am40k
                         new Label {Text = "YOBA? ETO TI?", FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.Center},
                         ArmyPicker ,
                         UnitPicker,
-                        AddButton
+                        AddButton,
+                        RosterPageButton
                     }
                 }                              
             };
         }
+        
+        private void RosterPageButton_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushModalAsync(new RosterPage());
+        }
+        
     }
 }
  
