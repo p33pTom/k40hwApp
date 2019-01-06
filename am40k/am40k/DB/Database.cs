@@ -37,7 +37,7 @@ namespace am40k
             {
                 using (var conn = new SQLiteConnection(System.IO.Path.Combine(DbFolder, DbName)))
                 {
-                    var ArmiesList = conn.Query<Unit>("Select * FROM Unit");
+                    var ArmiesList = conn.Query<Unit>("SELECT DISTINCT ArmyOf FROM Unit");
                     return ArmiesList;
                 }
             }
@@ -55,7 +55,7 @@ namespace am40k
             {
                 using (var conn = new SQLiteConnection(System.IO.Path.Combine(DbFolder, DbName)))
                 {
-                    var UnitNamesList = conn.Query<Unit>("SELECT Name FROM Unit");
+                    var UnitNamesList = conn.Query<Unit>("SELECT DISTINCT Name FROM Unit");
                     return UnitNamesList;
                 }
             }

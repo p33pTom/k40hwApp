@@ -1,8 +1,5 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.IO;
-using System;
-using SQLite;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
@@ -16,13 +13,15 @@ namespace am40k
         public App ()
 		{
             InitializeComponent();
-            database.CreateDatabase();
-            deathWatchUnitsData.DeathWatchUnitsSetup();
-            MainPage = new MainPage();  
+            MainPage = new MainPage();
 		}
 
-		protected override void OnStart (){}
+		protected override void OnStart ()
+        {
+            database.CreateDatabase();
+            deathWatchUnitsData.DeathWatchUnitsSetup();
+        }
 		protected override void OnSleep (){}
-		protected override void OnResume (){} 
+		protected override void OnResume (){}
     }
 }

@@ -18,15 +18,13 @@ namespace am40k
                 {
                     conn.Query<Unit>(deathwatchHQUnitsQuery);
                     return true;
-                }
-                    
+                }    
             }
             catch (SQLiteException ex)
             {
                 Log.Info("SQLiteEx", ex.Message);
                 return false;
-            }
-            
+            } 
         }
 
         //INSERT DEATHWATCH HQ UNITS QUERY:
