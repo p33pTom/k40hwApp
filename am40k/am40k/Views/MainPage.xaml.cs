@@ -7,6 +7,7 @@ namespace am40k
 	{
         Database database = new Database();
         List<Unit> Units = new List<Unit>();
+        RosterPage RosterPage = new RosterPage();
 
         public MainPage()
         {
@@ -26,6 +27,8 @@ namespace am40k
             {
                 Text = "Add Unit"
             };
+
+            AddButton.Clicked += AddButton_Clicked;
                 
             //populate Unit picker.
             ArmyPicker.SelectedIndexChanged += (sender, e) =>
@@ -55,6 +58,11 @@ namespace am40k
                     }
                 }                              
             };
+        }
+
+        private async void AddButton_Clicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new RosterPage());
         }
     }
 }
