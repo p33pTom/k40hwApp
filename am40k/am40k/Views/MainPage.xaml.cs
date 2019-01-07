@@ -22,18 +22,26 @@ namespace am40k
             //UNIT PICKER STATIC AND POPULATE
             var UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
 
+            
+
             //Add Unit BUTTON
-            Button AddButton = new Button
+            Button AddUnit = new Button
             {
                 Text = "Add Unit"
             };
+
+            void AddUnitButton_Clicked(object sender, System.EventArgs e)
+            {
+                var SelectedUnit = UnitPicker.Items[UnitPicker.SelectedIndex];
+            }
+            AddUnit.Clicked += AddUnitButton_Clicked;
+
 
             //ROSTER PAGE BUTTON
             Button RosterPageButton = new Button
             {
                 Text = "GO TO ROSTER PAGE"
             };
-
             RosterPageButton.Clicked += RosterPageButton_Clicked;
                 
             //populate Unit picker.
@@ -60,18 +68,16 @@ namespace am40k
                         new Label {Text = "YOBA? ETO TI?", FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.Center},
                         ArmyPicker ,
                         UnitPicker,
-                        AddButton,
+                        AddUnit,
                         RosterPageButton
                     }
                 }                              
             };
         }
-        
         private void RosterPageButton_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushModalAsync(new RosterPage());
-        }
-        
+        }  
     }
 }
  
