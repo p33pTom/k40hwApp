@@ -22,6 +22,7 @@ namespace am40k
                 {
                     conn.CreateTable<Unit>();
                     conn.CreateTable<Roster>();
+                    conn.CreateTable<RosterData>();
                     return true;
                 }
             }
