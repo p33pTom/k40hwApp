@@ -22,11 +22,10 @@ namespace am40k
             //UNIT PICKER STATIC AND POPULATE
             var UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
 
-            
-
             //Add Unit BUTTON
             Button AddUnit = new Button
             {
+                IsVisible = false,
                 Text = "Add Unit"
             };
 
@@ -48,6 +47,7 @@ namespace am40k
             ArmyPicker.SelectedIndexChanged += (sender, e) =>
             {
                 UnitPicker.IsVisible = true;
+                AddUnit.IsVisible = true;
                 UnitPicker.Items.Clear();
                 foreach (Unit unit in database.GetUnitNames())
                 {
