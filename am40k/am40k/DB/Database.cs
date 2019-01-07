@@ -13,7 +13,7 @@ namespace am40k
         public string DbName = "40k01";
         public string DbFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
-        //CREATE DB AND UNIT TABLE
+        //CREATE DB. CREATE UNIT AND ROSTER TABLE
         public bool CreateDatabase()
         {
             try
@@ -21,6 +21,9 @@ namespace am40k
                 using (var conn = new SQLiteConnection(System.IO.Path.Combine(DbFolder, DbName)))
                 {
                     conn.CreateTable<Unit>();
+                    conn.CreateTable<Roster>();
+                    conn.CreateTable<RosterData>();
+                    conn.CreateTable<DetachmentType>();
                     return true;
                 }
             }
