@@ -8,7 +8,7 @@ namespace am40k
         List<Unit> Units = new List<Unit>();
         //MainPage MainPage = new MainPage();
         //Database Database = new Database();
-        public ListView RosterUnits = new ListView()
+        ListView RosterUnits = new ListView()
         {
            
         };
