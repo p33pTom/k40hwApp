@@ -9,7 +9,7 @@ namespace am40k
     public class SetupDetachmentsTypes
     {
         Database Database = new Database();
-        Roster Roster = new Roster();
+        //Roster Roster = new Roster();
 
         public SetupDetachmentsTypes() { }
 

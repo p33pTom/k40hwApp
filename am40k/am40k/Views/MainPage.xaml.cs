@@ -12,12 +12,13 @@ namespace am40k
         RosterPage RosterPage = new RosterPage();
         DetachmentType DetachmentTypes = new DetachmentType();
         SetupDetachmentsTypes SetupDetachmentsTypes = new SetupDetachmentsTypes();
-        
+
 
         public MainPage()
         {
             //ARMY PICKER - STATIC AND POPULATE
-            var ArmyPicker = new Picker { Title = "Select an army...", };
+            var ArmyPicker = new Picker { Title = "Select Army (Faction)", };
+            ArmyPicker.BackgroundColor = Color.FromHex("#666666");
             var Armies = database.GetArmies();
             foreach (Unit unit in Armies)
             {
@@ -25,12 +26,19 @@ namespace am40k
             }
 
             //DETACHMENT PICKER
-            var DetachmentPicker = new Picker { Title = "Select Detachment" };
+            var DetachmentPicker = new Picker { Title = "Specify Detachment" };
+            DetachmentPicker.BackgroundColor = Color.FromHex("#666666");
             var DetachmentTypes = SetupDetachmentsTypes.GetDetachments();
             foreach (DetachmentType Detachment in DetachmentTypes)
             {
                 DetachmentPicker.Items.Add(Detachment.DetachmentCaption);
             }
+
+            Button AddDetachment = new Button
+            {
+                BackgroundColor = Color.FromHex("#666666"),
+                Text = "Add Detachment"
+            };
 
 
             //UNIT PICKER STATIC AND POPULATE
@@ -83,21 +91,23 @@ namespace am40k
                     }
                 }
             };
-            
+
             //Create page content
             Content = new ScrollView
             {
                 Content = new StackLayout
                 {
                     Margin = new Thickness(20),
+                    BackgroundColor = Color.FromHex("#F7F7F7"),
                     Children =
                     {
                         new Label {Text = "YOBA? ETO TI?", FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.Center},
                         ArmyPicker ,
                         DetachmentPicker,
-                        UnitPicker,
-                        AddUnit,
-                        RosterPageButton
+                        AddDetachment,
+                        //UnitPicker,
+                        //AddUnit,
+                        //RosterPageButton
                     }
                 }                              
             };
