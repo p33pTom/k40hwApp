@@ -12,7 +12,7 @@ namespace am40k
         //public string UserId { get; set; }
         //public string RosterName { get; set; }
         //public int Detachments { get; set; }
-        public int Units { get; set; }
+        public string Unit { get; set; }
         public int Models { get; set; }
         public int Points { get; set; }
     }

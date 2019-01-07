@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms;
+using SQLite;
+using Android.Util;
 
 namespace am40k
 {
@@ -32,6 +34,19 @@ namespace am40k
             void AddUnitButton_Clicked(object sender, System.EventArgs e)
             {
                 var SelectedUnit = UnitPicker.Items[UnitPicker.SelectedIndex];
+                try
+                {
+                    using (var conn = new SQLiteConnection(System.IO.Path.Combine(database.DbFolder, database.DbName)))
+                    {
+                        string query = string.Format("INSERT INTO Roster (Unit) VALUES ('{0}')", SelectedUnit);
+                        conn.Query<Roster>(query);
+                        var CTPAX = conn.Query<Roster>("Select Unit from Roster");
+                    }
+                }
+                catch (SQLiteException ex)
+                {
+                    Log.Info("SQLiteEx", ex.Message);
+                }
             }
             AddUnit.Clicked += AddUnitButton_Clicked;
 
