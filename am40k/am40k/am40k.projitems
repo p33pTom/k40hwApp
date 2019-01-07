@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)db\Database.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataSetup\DeathWatchUnitsDataSetup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Detachments\PatrolDetachment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Detachment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Roster.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\RosterData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Unit.cs" />

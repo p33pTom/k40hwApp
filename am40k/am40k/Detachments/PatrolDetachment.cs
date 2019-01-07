@@ -21,5 +21,11 @@ namespace am40k.Detachments
             HeavySupport = heavySupport;
             Flyers = flyers;
         }
+
+        public void GetPatrolDetachmentRules()
+        {
+
+        }
     }
+
 }
