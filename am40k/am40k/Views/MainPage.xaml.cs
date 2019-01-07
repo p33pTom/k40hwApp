@@ -10,6 +10,9 @@ namespace am40k
         Database database = new Database();
         List<Unit> Units = new List<Unit>();
         RosterPage RosterPage = new RosterPage();
+        DetachmentType DetachmentTypes = new DetachmentType();
+        SetupDetachmentsTypes SetupDetachmentsTypes = new SetupDetachmentsTypes();
+        
 
         public MainPage()
         {
@@ -20,6 +23,15 @@ namespace am40k
             {
                 ArmyPicker.Items.Add(unit.ArmyOf);
             }
+
+            //DETACHMENT PICKER
+            var DetachmentPicker = new Picker { Title = "Select Detachment" };
+            var DetachmentTypes = SetupDetachmentsTypes.GetDetachments();
+            foreach (DetachmentType Detachment in DetachmentTypes)
+            {
+                DetachmentPicker.Items.Add(Detachment.DetachmentCaption);
+            }
+
 
             //UNIT PICKER STATIC AND POPULATE
             var UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
@@ -82,6 +94,7 @@ namespace am40k
                     {
                         new Label {Text = "YOBA? ETO TI?", FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.Center},
                         ArmyPicker ,
+                        DetachmentPicker,
                         UnitPicker,
                         AddUnit,
                         RosterPageButton

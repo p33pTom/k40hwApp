@@ -8,6 +8,7 @@ namespace am40k
     public partial class App : Application
 	{
         Database database = new Database();
+        SetupDetachmentsTypes SetupDetachmentsTypes = new SetupDetachmentsTypes();
         DeathWatchUnitsDataSetup deathWatchUnitsData = new DeathWatchUnitsDataSetup();
 
         public App ()
@@ -16,6 +17,12 @@ namespace am40k
             ContentPage RosterPage = new ContentPage();
             InitializeComponent();
             database.CreateDatabase();
+
+            //---DETACHMENTS TYPES SETUP---
+            SetupDetachmentsTypes.InitializeDetachmentsTypes();
+
+            //---UNITS SETUP---
+            //***DEATHWATCH***
             deathWatchUnitsData.DeathWatchUnitsSetup();
             
 		}

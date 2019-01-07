@@ -15,10 +15,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)DataSetup\SetupDetachmentsTypes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)db\Database.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataSetup\DeathWatchUnitsDataSetup.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Detachments\PatrolDetachment.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Detachment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DetachmentRules\PatrolDetachment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DetachmentType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Roster.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\RosterData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Unit.cs" />
@@ -36,9 +37,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)DataSetup\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\RosterPage.xaml">

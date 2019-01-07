@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SQLite;
 
-namespace am40k.Detachments
+namespace am40k
 {
     public class PatrolDetachment
     {
