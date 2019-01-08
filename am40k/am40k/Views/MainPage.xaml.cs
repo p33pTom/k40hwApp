@@ -12,12 +12,13 @@ namespace am40k
         RosterPage RosterPage = new RosterPage();
         DetachmentType DetachmentTypes = new DetachmentType();
         SetupDetachmentsTypes SetupDetachmentsTypes = new SetupDetachmentsTypes();
-        
+
 
         public MainPage()
         {
             //ARMY PICKER - STATIC AND POPULATE
-            var ArmyPicker = new Picker { Title = "Select an army...", };
+            Picker ArmyPicker = new Picker { Title = "Select Army (Faction)", };
+            //ArmyPicker.BackgroundColor = Color.FromHex("#666666");
             var Armies = database.GetArmies();
             foreach (Unit unit in Armies)
             {
@@ -25,16 +26,22 @@ namespace am40k
             }
 
             //DETACHMENT PICKER
-            var DetachmentPicker = new Picker { Title = "Select Detachment" };
+            Picker DetachmentPicker = new Picker { Title = "Specify Detachment" };
+            //DetachmentPicker.BackgroundColor = Color.FromHex("#666666");
             var DetachmentTypes = SetupDetachmentsTypes.GetDetachments();
             foreach (DetachmentType Detachment in DetachmentTypes)
             {
                 DetachmentPicker.Items.Add(Detachment.DetachmentCaption);
             }
 
+            Button AddDetachment = new Button
+            {
+                //BackgroundColor = Color.FromHex("#666666"),
+                Text = "Add Detachment"
+            };
 
             //UNIT PICKER STATIC AND POPULATE
-            var UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
+            Picker UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
 
             //Add Unit BUTTON
             Button AddUnit = new Button
@@ -52,7 +59,6 @@ namespace am40k
                     {
                         string query = string.Format("INSERT INTO Roster (Unit) VALUES ('{0}')", SelectedUnit);
                         conn.Query<Roster>(query);
-                        var CTPAX = conn.Query<Roster>("Select Unit from Roster");
                     }
                 }
                 catch (SQLiteException ex)
@@ -83,18 +89,33 @@ namespace am40k
                     }
                 }
             };
-            
+
+            Label GenerateRosterMainPage = new Label
+            {
+                Text = "Generate your Roster",
+                TextColor = Color.White,
+                FontSize = 16,
+                HorizontalTextAlignment = TextAlignment.Center,
+                FontAttributes = FontAttributes.Bold,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.Center,
+                BackgroundColor = Color.Black,
+            };
+
             //Create page content
             Content = new ScrollView
             {
                 Content = new StackLayout
                 {
                     Margin = new Thickness(20),
+                    BackgroundColor = Color.FromHex("#F7F7F7"),
                     Children =
                     {
-                        new Label {Text = "YOBA? ETO TI?", FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.Center},
-                        ArmyPicker ,
+                        GenerateRosterMainPage,
+                        ArmyPicker,
                         DetachmentPicker,
+                        AddDetachment,
+                        new Label {Text = "", BackgroundColor = Color.Black, HorizontalOptions = LayoutOptions.FillAndExpand },
                         UnitPicker,
                         AddUnit,
                         RosterPageButton

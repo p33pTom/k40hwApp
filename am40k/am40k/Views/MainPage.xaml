@@ -4,6 +4,7 @@
              x:Class="am40k.ArmiesPage">
     <ScrollView>
         <StackLayout Margin="20">
+
         </StackLayout>
     </ScrollView>
 </ContentPage>
