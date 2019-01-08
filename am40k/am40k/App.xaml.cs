@@ -16,6 +16,7 @@ namespace am40k
             MainPage = new MainPage();
             ContentPage RosterPage = new ContentPage();
             InitializeComponent();
+            database.DropTables();
             database.CreateDatabase();
 
             //---DETACHMENTS TYPES SETUP---

@@ -40,7 +40,6 @@ namespace am40k
                 Text = "Add Detachment"
             };
 
-
             //UNIT PICKER STATIC AND POPULATE
             Picker UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
 
@@ -60,7 +59,6 @@ namespace am40k
                     {
                         string query = string.Format("INSERT INTO Roster (Unit) VALUES ('{0}')", SelectedUnit);
                         conn.Query<Roster>(query);
-                        var CTPAX = conn.Query<Roster>("Select Unit from Roster");
                     }
                 }
                 catch (SQLiteException ex)
@@ -102,7 +100,6 @@ namespace am40k
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black,
-
             };
 
             //Create page content

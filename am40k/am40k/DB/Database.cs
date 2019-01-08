@@ -13,6 +13,27 @@ namespace am40k
         public string DbName = "40k01";
         public string DbFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
+        public bool DropTables()
+        {
+            try
+            {
+                using (var conn = new SQLiteConnection(System.IO.Path.Combine(DbFolder, DbName)))
+                {
+                    conn.Query<Unit>("DROP TABLE Unit;");
+                    conn.Query<Roster>("DROP TABLE Roster;");
+                    conn.Query<RosterData>("DROP TABLE RosterData");
+                    conn.Query<DetachmentType>("DROP TABLE DetachmentType");
+                    conn.Query<DetachmentType>("SELECT DetachmentCaption FROM DetachmentType;");
+                    return true;
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                Log.Error("SQLite", ex.Message);
+                return false;
+            }
+        }
+
         //CREATE DB. CREATE UNIT AND ROSTER TABLE
         public bool CreateDatabase()
         {
@@ -29,7 +50,7 @@ namespace am40k
             }
             catch (SQLiteException ex)
             {
-                Log.Info("SQLiteEx", ex.Message);
+                Log.Error("SQLiteEx", ex.Message);
                 return false;
             }
         }
