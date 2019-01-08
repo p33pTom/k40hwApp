@@ -17,8 +17,8 @@ namespace am40k
         public MainPage()
         {
             //ARMY PICKER - STATIC AND POPULATE
-            var ArmyPicker = new Picker { Title = "Select Army (Faction)", };
-            ArmyPicker.BackgroundColor = Color.FromHex("#666666");
+            Picker ArmyPicker = new Picker { Title = "Select Army (Faction)", };
+            //ArmyPicker.BackgroundColor = Color.FromHex("#666666");
             var Armies = database.GetArmies();
             foreach (Unit unit in Armies)
             {
@@ -26,8 +26,8 @@ namespace am40k
             }
 
             //DETACHMENT PICKER
-            var DetachmentPicker = new Picker { Title = "Specify Detachment" };
-            DetachmentPicker.BackgroundColor = Color.FromHex("#666666");
+            Picker DetachmentPicker = new Picker { Title = "Specify Detachment" };
+            //DetachmentPicker.BackgroundColor = Color.FromHex("#666666");
             var DetachmentTypes = SetupDetachmentsTypes.GetDetachments();
             foreach (DetachmentType Detachment in DetachmentTypes)
             {
@@ -36,13 +36,13 @@ namespace am40k
 
             Button AddDetachment = new Button
             {
-                BackgroundColor = Color.FromHex("#666666"),
+                //BackgroundColor = Color.FromHex("#666666"),
                 Text = "Add Detachment"
             };
 
 
             //UNIT PICKER STATIC AND POPULATE
-            var UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
+            Picker UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
 
             //Add Unit BUTTON
             Button AddUnit = new Button
@@ -92,6 +92,19 @@ namespace am40k
                 }
             };
 
+            Label GenerateRosterMainPage = new Label
+            {
+                Text = "Generate your Roster",
+                TextColor = Color.White,
+                FontSize = 16,
+                HorizontalTextAlignment = TextAlignment.Center,
+                FontAttributes = FontAttributes.Bold,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.Center,
+                BackgroundColor = Color.Black,
+
+            };
+
             //Create page content
             Content = new ScrollView
             {
@@ -101,13 +114,14 @@ namespace am40k
                     BackgroundColor = Color.FromHex("#F7F7F7"),
                     Children =
                     {
-                        new Label {Text = "YOBA? ETO TI?", FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.Center},
-                        ArmyPicker ,
+                        GenerateRosterMainPage,
+                        ArmyPicker,
                         DetachmentPicker,
                         AddDetachment,
-                        //UnitPicker,
-                        //AddUnit,
-                        //RosterPageButton
+                        new Label {Text = "", BackgroundColor = Color.Black, HorizontalOptions = LayoutOptions.FillAndExpand },
+                        UnitPicker,
+                        AddUnit,
+                        RosterPageButton
                     }
                 }                              
             };
