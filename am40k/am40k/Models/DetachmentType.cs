@@ -7,9 +7,9 @@ namespace am40k
     {
         public DetachmentType() { }
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int DetachmentTypeId { get; set; }
         [NotNull]
-        public string DetachmentCaption { get; set; }
+        public string DetachmentTypeCaption { get; set; }
         public int DetachmentPointsBonus { get; set; }
     }
 }

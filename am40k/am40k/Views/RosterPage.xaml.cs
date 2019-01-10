@@ -5,17 +5,17 @@ namespace am40k
 {
     public partial class RosterPage : ContentPage
     {
-        List<Unit> Units = new List<Unit>();
-        //MainPage MainPage = new MainPage();
-        //Database Database = new Database();
-        ListView RosterUnits = new ListView()
-        {
-           
-        };
+        public List<Unit> Units = new List<Unit>();
+        MainPage MainPage = new MainPage();
+        Database Database = new Database();
 
         public RosterPage()
         {
             //ROSTER UNITS LIST
+
+            var RosterView = new ListView();
+            
+
 
             Button BackToMainPageButton = new Button()
             {
@@ -33,7 +33,7 @@ namespace am40k
                     {
                         new Label {Text = "ROSTER YOBA!!!", FontAttributes = FontAttributes.Bold, HorizontalOptions = LayoutOptions.Center},
                         BackToMainPageButton,
-                        RosterUnits
+                        RosterView
                     }
                 }
             };
@@ -42,6 +42,7 @@ namespace am40k
         private void BackToMainPageButton_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushModalAsync(new MainPage());
+            
         }
     }
 }

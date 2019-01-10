@@ -23,7 +23,6 @@ namespace am40k
                     conn.Query<Roster>("DROP TABLE Roster;");
                     conn.Query<UserDetachments>("DROP TABLE UserDetachments");
                     conn.Query<DetachmentType>("DROP TABLE DetachmentType");
-                    conn.Query<DetachmentType>("SELECT DetachmentCaption FROM DetachmentType;");
                     return true;
                 }
             }
@@ -41,10 +40,12 @@ namespace am40k
             {
                 using (var conn = new SQLiteConnection(System.IO.Path.Combine(DbFolder, DbName)))
                 {
+                    
                     conn.BeginTransaction();
                     // UNIT TABLE FOREIGN KEYS
                     conn.Query<Unit>("PRAGMA foreign_keys = true;");
-                    conn.Query<Unit>("ALTER TABLE Unit ADD CONSTRAINT (FK_UnitToRoster) FOREIGN KEY (RosterId) REFERENCES Roster(RosterId)");
+                    string FK_UnitToRoster_Query = string.Format("ALTER TABLE Unit ADD CONSTRAINT FK_UnitToRoster FOREIGN KEY (RosterId) REFERENCES Roster(RosterId) ON UPDATE ACTION");
+                    conn.Query<Unit>(FK_UnitToRoster_Query);
 
                     // ROSTER TABLE FOREIGN KEYS
                     conn.Query<Roster>("ALTER TABLE Roster ADD CONSTRAINT 'FK_RosterToUnit' FOREIGN KEY (RosterId) REFERENCES Unit(RosterId)");

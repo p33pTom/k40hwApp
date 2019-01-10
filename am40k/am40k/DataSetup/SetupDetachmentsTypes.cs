@@ -20,7 +20,7 @@ namespace am40k
                 using (var conn = new SQLiteConnection(System.IO.Path.Combine(Database.DbFolder, Database.DbName)))
                 {
                     conn.Query<DetachmentType>(DetachmentsTypesInsertQuery);
-                    var testSelect = conn.Query<DetachmentType>("SELECT DetachmentCaption FROM DetachmentType");
+                    var testSelect = conn.Query<DetachmentType>("SELECT DetachmentTypeCaption FROM DetachmentType");
                     return true;
                 }
                 
@@ -38,7 +38,7 @@ namespace am40k
             {
                 using (var conn = new SQLiteConnection(System.IO.Path.Combine(Database.DbFolder, Database.DbName)))
                 {
-                    var DetachmentsList = conn.Query<DetachmentType>("SELECT DISTINCT DetachmentCaption FROM DetachmentType");
+                    var DetachmentsList = conn.Query<DetachmentType>("SELECT DISTINCT DetachmentTypeCaption FROM DetachmentType");
                     return DetachmentsList;
                 }
             }
@@ -50,7 +50,7 @@ namespace am40k
 
         }
 
-        readonly string DetachmentsTypesInsertQuery = ("INSERT INTO DetachmentType (DetachmentCaption, DetachmentPointsBonus) VALUES " +
+        readonly string DetachmentsTypesInsertQuery = ("INSERT INTO DetachmentType (DetachmentTypeCaption, DetachmentPointsBonus) VALUES " +
                         "('Patrol Detachment', 1), " +
                         "('Batallion Detachment', 5), " +
                         "('Brigade Detachment', 11), " +

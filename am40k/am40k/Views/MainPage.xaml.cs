@@ -9,7 +9,7 @@ namespace am40k
 	{
         Database database = new Database();
         List<Unit> Units = new List<Unit>();
-        RosterPage RosterPage = new RosterPage();
+        //RosterPage RosterPage = new RosterPage();
         DetachmentType DetachmentTypes = new DetachmentType();
         SetupDetachmentsTypes SetupDetachmentsTypes = new SetupDetachmentsTypes();
 
@@ -31,7 +31,7 @@ namespace am40k
             var DetachmentTypes = SetupDetachmentsTypes.GetDetachments();
             foreach (DetachmentType Detachment in DetachmentTypes)
             {
-                DetachmentPicker.Items.Add(Detachment.DetachmentCaption);
+                DetachmentPicker.Items.Add(Detachment.DetachmentTypeCaption);
             }
 
             Button AddDetachment = new Button
@@ -39,6 +39,7 @@ namespace am40k
                 //BackgroundColor = Color.FromHex("#666666"),
                 Text = "Add Detachment"
             };
+            
 
             //UNIT PICKER STATIC AND POPULATE
             Picker UnitPicker = new Picker { Title = "Select unit...", IsVisible = false};
@@ -68,6 +69,29 @@ namespace am40k
             }
             AddUnit.Clicked += AddUnitButton_Clicked;
 
+
+            void AddDetachmentButton_Clicked (object sender, System.EventArgs e)
+            {
+                var SelectedArmy = ArmyPicker.Items[ArmyPicker.SelectedIndex];
+                var SelectedDetachmentType = DetachmentPicker.Items[DetachmentPicker.SelectedIndex];
+                using (var conn = new SQLiteConnection(System.IO.Path.Combine(database.DbFolder, database.DbName)))
+                {
+                    conn.BeginTransaction();
+                    string CreateDetachQuery = string.Format("INSERT INTO UserDetachments (RosterId, DetachmentTypeId) " +
+                                                            "SELECT RosterId, DetachmentId FROM Roster " +
+                                                            "JOIN DetachmentType " +
+                                                            "ON Roster.DetachmentId = DetachmentType.DetachmentTypeId " +
+                                                            "WHERE DetachmentType.DetachmentTypeCaption = '{0}'", SelectedDetachmentType);
+                    conn.Query<UserDetachments>(CreateDetachQuery);
+                    string Result = string.Format("SELECT DetachmentId FROM UserDetachments;");
+                    List<UserDetachments> VASYA = conn.Query<UserDetachments>(Result);
+                    RosterPage RosterPage = new RosterPage();
+                    
+                    conn.Commit();
+                }
+                
+            }
+            AddDetachment.Clicked += AddDetachmentButton_Clicked;
 
             //ROSTER PAGE BUTTON
             Button RosterPageButton = new Button
@@ -126,7 +150,13 @@ namespace am40k
         private void RosterPageButton_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushModalAsync(new RosterPage());
-        }  
+        }
+
+        private void AddDetachmentButton_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushModalAsync(new RosterPage());
+            
+        }
     }
 }
  
