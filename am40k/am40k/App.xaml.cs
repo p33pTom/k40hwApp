@@ -13,9 +13,6 @@ namespace am40k
 
         public App ()
 		{
-            MainPage = new MainPage();
-            ContentPage RosterPage = new ContentPage();
-            InitializeComponent();
             database.DropTables();
             database.CreateDatabase();
 
@@ -25,8 +22,16 @@ namespace am40k
             //---UNITS SETUP---
             //***DEATHWATCH***
             deathWatchUnitsData.DeathWatchUnitsSetup();
-            
-		}
+
+            //---UPDATE TABLES WITH FOREIGN KEYS
+            database.UpdateTablesWithForeignKeys();
+
+            //---INIT MAIN PAGE
+            InitializeComponent();
+
+            MainPage = new MainPage();
+            ContentPage RosterPage = new ContentPage();
+        }
 
 		protected override void OnStart (){}
 		protected override void OnSleep (){}
