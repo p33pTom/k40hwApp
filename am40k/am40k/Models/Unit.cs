@@ -10,6 +10,8 @@ namespace am40k
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
+        public int RosterId { get; set; }
+
         [Unique, NotNull]
         public string Caption { get; set; }
 

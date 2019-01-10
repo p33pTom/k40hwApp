@@ -21,7 +21,7 @@ namespace am40k
                 {
                     conn.Query<Unit>("DROP TABLE Unit;");
                     conn.Query<Roster>("DROP TABLE Roster;");
-                    conn.Query<RosterData>("DROP TABLE RosterData");
+                    conn.Query<UserDetachments>("DROP TABLE UserDetachments");
                     conn.Query<DetachmentType>("DROP TABLE DetachmentType");
                     conn.Query<DetachmentType>("SELECT DetachmentCaption FROM DetachmentType;");
                     return true;
@@ -43,8 +43,8 @@ namespace am40k
                 {
                     conn.CreateTable<Unit>();
                     conn.CreateTable<Roster>();
-                    conn.CreateTable<RosterData>();
                     conn.CreateTable<DetachmentType>();
+                    conn.CreateTable<UserDetachments>();
                     return true;
                 }
             }
