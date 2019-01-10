@@ -21,7 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DetachmentRules\PatrolDetachment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\DetachmentType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Roster.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\RosterData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UserDetachments.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Unit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
