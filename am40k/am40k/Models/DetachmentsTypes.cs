@@ -2,10 +2,10 @@
 
 namespace am40k
 {
-    [Table("DetachmentType")]
-    public class DetachmentType
+    [Table("DetachmentsTypes")]
+    public class DetachmentsTypes
     {
-        public DetachmentType() { }
+        public DetachmentsTypes() { }
         [PrimaryKey, AutoIncrement]
         public int DetachmentTypeId { get; set; }
         [NotNull]

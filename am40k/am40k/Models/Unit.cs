@@ -2,10 +2,10 @@
 
 namespace am40k
 {
-    [Table("Unit")]
-    public class Unit
+    [Table("Units")]
+    public class Units
     {       
-        public Unit() { }
+        public Units() { }
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

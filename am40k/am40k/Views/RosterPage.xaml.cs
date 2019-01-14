@@ -5,7 +5,7 @@ namespace am40k
 {
     public partial class RosterPage : ContentPage
     {
-        public List<Unit> Units = new List<Unit>();
+        public List<Units> Units = new List<Units>();
         MainPage MainPage = new MainPage();
         Database Database = new Database();
 

@@ -8,9 +8,9 @@ namespace am40k
     public partial class MainPage : ContentPage
 	{
         Database database = new Database();
-        List<Unit> Units = new List<Unit>();
+        List<Units> Units = new List<Units>();
         //RosterPage RosterPage = new RosterPage();
-        DetachmentType DetachmentTypes = new DetachmentType();
+        DetachmentsTypes DetachmentTypes = new DetachmentsTypes();
         SetupDetachmentsTypes SetupDetachmentsTypes = new SetupDetachmentsTypes();
 
 
@@ -20,7 +20,7 @@ namespace am40k
             Picker ArmyPicker = new Picker { Title = "Select Army (Faction)", };
             //ArmyPicker.BackgroundColor = Color.FromHex("#666666");
             var Armies = database.GetArmies();
-            foreach (Unit unit in Armies)
+            foreach (Units unit in Armies)
             {
                 ArmyPicker.Items.Add(unit.ArmyOf);
             }
@@ -29,7 +29,7 @@ namespace am40k
             Picker DetachmentPicker = new Picker { Title = "Specify Detachment" };
             //DetachmentPicker.BackgroundColor = Color.FromHex("#666666");
             var DetachmentTypes = SetupDetachmentsTypes.GetDetachments();
-            foreach (DetachmentType Detachment in DetachmentTypes)
+            foreach (DetachmentsTypes Detachment in DetachmentTypes)
             {
                 DetachmentPicker.Items.Add(Detachment.DetachmentTypeCaption);
             }
@@ -58,8 +58,8 @@ namespace am40k
                 {
                     using (var conn = new SQLiteConnection(System.IO.Path.Combine(database.DbFolder, database.DbName)))
                     {
-                        string query = string.Format("INSERT INTO Roster (Unit) VALUES ('{0}')", SelectedUnit);
-                        conn.Query<Roster>(query);
+                        string query = string.Format("INSERT INTO Rosters (Unit) VALUES ('{0}')", SelectedUnit);
+                        conn.Query<Rosters>(query);
                     }
                 }
                 catch (SQLiteException ex)
@@ -72,24 +72,36 @@ namespace am40k
 
             void AddDetachmentButton_Clicked (object sender, System.EventArgs e)
             {
-                var SelectedArmy = ArmyPicker.Items[ArmyPicker.SelectedIndex];
-                var SelectedDetachmentType = DetachmentPicker.Items[DetachmentPicker.SelectedIndex];
-                using (var conn = new SQLiteConnection(System.IO.Path.Combine(database.DbFolder, database.DbName)))
+                try
                 {
-                    conn.BeginTransaction();
-                    string CreateDetachQuery = string.Format("INSERT INTO UserDetachments (RosterId, DetachmentTypeId) " +
-                                                            "SELECT RosterId, DetachmentId FROM Roster " +
-                                                            "JOIN DetachmentType " +
-                                                            "ON Roster.DetachmentId = DetachmentType.DetachmentTypeId " +
-                                                            "WHERE DetachmentType.DetachmentTypeCaption = '{0}'", SelectedDetachmentType);
-                    conn.Query<UserDetachments>(CreateDetachQuery);
-                    string Result = string.Format("SELECT DetachmentId FROM UserDetachments;");
-                    List<UserDetachments> VASYA = conn.Query<UserDetachments>(Result);
-                    RosterPage RosterPage = new RosterPage();
-                    
-                    conn.Commit();
+                    var SelectedArmy = ArmyPicker.Items[ArmyPicker.SelectedIndex];
+                    var SelectedDetachmentType = DetachmentPicker.Items[DetachmentPicker.SelectedIndex];
+                    using (var conn = new SQLiteConnection(System.IO.Path.Combine(database.DbFolder, database.DbName)))
+                    {
+                        conn.BeginTransaction();
+                        var SelectedDetachmentTypeId = string.Format("SELECT DetachmentTypeId FROM DetachmentsTypes where DetachmentTypeCaption = '{0}'", SelectedDetachmentType);
+                        var TypeId = conn.Query<DetachmentsTypes>(SelectedDetachmentTypeId);
+                        string CreateRoster = string.Format("INSERT INTO Rosters (DetachmentTypeId) VALUES ('{0}')", TypeId);
+                        string CreateDetachQuery = string.Format("INSERT INTO UserDetachments (R.RosterId, R.DetachmentTypeId) " +
+                                                                "SELECT RosterId, DetachmentTypeId FROM Rosters AS R " +
+                                                                "JOIN DetachmentsTypes AS DT " +
+                                                                "ON R.DetachmentTypeId = DT.DetachmentTypeId " +
+                                                                "WHERE DT.DetachmentTypeCaption = '{0}'", SelectedDetachmentType);
+                        conn.Query<Rosters>(CreateRoster);
+                        var RosterResult = string.Format("SELECT RosterId FROM Rosters");
+                        conn.Query<Rosters>(RosterResult);
+                        conn.Query<UserDetachments>(CreateDetachQuery);
+                        string Result = string.Format("SELECT DetachmentId FROM UserDetachments;");
+                        List<UserDetachments> VASYA = conn.Query<UserDetachments>(Result);
+                        RosterPage RosterPage = new RosterPage();
+
+                        conn.Commit();
+                    }
                 }
-                
+                catch (SQLiteException ex)
+                {
+                    Log.Error("SQLiteEx", ex.Message);
+                }
             }
             AddDetachment.Clicked += AddDetachmentButton_Clicked;
 
@@ -106,7 +118,7 @@ namespace am40k
                 UnitPicker.IsVisible = true;
                 AddUnit.IsVisible = true;
                 UnitPicker.Items.Clear();
-                foreach (Unit unit in database.GetUnitNames())
+                foreach (Units unit in database.GetUnitNames())
                 {
                     {
                         UnitPicker.Items.Add(unit.Name);
