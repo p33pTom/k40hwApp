@@ -22,7 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\DetachmentsTypes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Rosters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\UserDetachments.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Unit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Units.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
       <SubType>Code</SubType>
