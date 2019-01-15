@@ -9,9 +9,9 @@ namespace am40k
 
         [PrimaryKey, AutoIncrement]
         public int RosterId { get; set; }
-        public int UnitId { get; set; }
+        public int ArmyUnitId { get; set; }
         public int DetachmentId { get; set; }
-        public int DetachmentTypeId { get; set; }
+        public string DetachmentType { get; set; }
         public int TotalModels { get; set; }
         public int TotalUnits { get; set; }
         public int TotalPoints { get; set; }

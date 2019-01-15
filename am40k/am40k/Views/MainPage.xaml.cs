@@ -79,22 +79,8 @@ namespace am40k
                     using (var conn = new SQLiteConnection(System.IO.Path.Combine(database.DbFolder, database.DbName)))
                     {
                         conn.BeginTransaction();
-                        var SelectedDetachmentTypeId = string.Format("SELECT DetachmentTypeId FROM DetachmentsTypes where DetachmentTypeCaption = '{0}'", SelectedDetachmentType);
-                        var TypeId = conn.Query<DetachmentsTypes>(SelectedDetachmentTypeId);
-                        string CreateRoster = string.Format("INSERT INTO Rosters (DetachmentTypeId) VALUES ('{0}')", TypeId);
-                        string CreateDetachQuery = string.Format("INSERT INTO UserDetachments (R.RosterId, R.DetachmentTypeId) " +
-                                                                "SELECT RosterId, DetachmentTypeId FROM Rosters AS R " +
-                                                                "JOIN DetachmentsTypes AS DT " +
-                                                                "ON R.DetachmentTypeId = DT.DetachmentTypeId " +
-                                                                "WHERE DT.DetachmentTypeCaption = '{0}'", SelectedDetachmentType);
+                        string CreateRoster = string.Format("INSERT INTO Rosters (DetachmentType) VALUES ('{0}')",SelectedDetachmentType);
                         conn.Query<Rosters>(CreateRoster);
-                        var RosterResult = string.Format("SELECT RosterId FROM Rosters");
-                        conn.Query<Rosters>(RosterResult);
-                        conn.Query<UserDetachments>(CreateDetachQuery);
-                        string Result = string.Format("SELECT DetachmentId FROM UserDetachments;");
-                        List<UserDetachments> VASYA = conn.Query<UserDetachments>(Result);
-                        RosterPage RosterPage = new RosterPage();
-
                         conn.Commit();
                     }
                 }

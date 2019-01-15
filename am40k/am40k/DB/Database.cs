@@ -128,5 +128,33 @@ namespace am40k
                 return null;
             }
         }
+
+        public List<Rosters> GetRosters()
+        {
+            try
+            {
+                using (var conn = new SQLiteConnection(System.IO.Path.Combine(DbFolder, DbName)))
+                {
+                    var RostersList = conn.Query<Rosters>("SELECT DetachmentType FROM Rosters");
+                    return RostersList;
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                Log.Error("SQLiteEx", ex.Message);
+                return null;
+            }
+        }
+
+        public List<string> GetUserRosters()
+        {
+            List<string> UserRostersTypes = new List<string>();
+            List<Rosters> rosters = GetRosters();
+            foreach (Rosters userRoster in rosters)
+            {
+                UserRostersTypes.Add(userRoster.DetachmentType);
+            }
+            return UserRostersTypes;
+        }
     }
 }

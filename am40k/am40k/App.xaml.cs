@@ -24,7 +24,7 @@ namespace am40k
             deathWatchUnitsData.DeathWatchUnitsSetup();
 
             //---UPDATE TABLES WITH FOREIGN KEYS
-            database.UpdateTablesWithForeignKeys();
+            //database.UpdateTablesWithForeignKeys();
 
             //---INIT MAIN PAGE
             InitializeComponent();
