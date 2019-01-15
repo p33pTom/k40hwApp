@@ -12,13 +12,10 @@ namespace am40k
 
         [PrimaryKey, AutoIncrement]
         public int DetachmentId { get; set; }
-        [NotNull]
-        public int RosterId { get; set; }
-        [NotNull]
-        public string UnitId { get; set; }
         public string DetachmentTypeId { get; set; }
         public string Name { get; set; }
         public int TotalModels { get; set; }
+        public int TotalUnits { get; set; }
         public int TotalPoints { get; set; }
     }
 }

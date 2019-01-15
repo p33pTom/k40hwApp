@@ -2,12 +2,13 @@
 
 namespace am40k
 {
-    [Table("Units")]
-    public class Units
-    {       
-        public Units() { }
-
+    [Table("ArmyUnits")]
+    public class ArmyUnits
+    {
+        public ArmyUnits() { }
+        
         [PrimaryKey, AutoIncrement]
+        public int ArmyUnitId { get; set; }
         public int UnitId { get; set; }
         [Unique, NotNull]
         public string Caption { get; set; }
