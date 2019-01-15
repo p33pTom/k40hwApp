@@ -12,9 +12,20 @@ namespace am40k
         public RosterPage()
         {
             //ROSTER UNITS LIST
-
-            var RosterView = new ListView();
+            var RostersList = Database.GetUserRosters();
+            ListView RosterView = new ListView() {
+                ItemsSource = RostersList
+            };
             
+            
+            /*
+            foreach (Rosters roster in RostersList)
+            {
+                RosterView.ItemsSource = roster.DetachmentType; 
+            }
+            */
+
+
 
 
             Button BackToMainPageButton = new Button()
