@@ -7,7 +7,7 @@ namespace am40k
 {
     public class PatrolDetachment
     {
-        List<Unit> Units = new List<Unit>();
+        readonly List<Units> Units = new List<Units>();
 
         public PatrolDetachment() { }
 

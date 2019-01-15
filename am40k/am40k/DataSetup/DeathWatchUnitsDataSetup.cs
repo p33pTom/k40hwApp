@@ -16,7 +16,7 @@ namespace am40k
             {
                 using (var conn = new SQLiteConnection(System.IO.Path.Combine(database.DbFolder, database.DbName)))
                 {
-                    conn.Query<Unit>(deathwatchHQUnitsQuery);
+                    conn.Query<Units>(deathwatchHQUnitsQuery);
                     return true;
                 }    
             }
@@ -29,7 +29,7 @@ namespace am40k
 
         //INSERT DEATHWATCH HQ UNITS QUERY:
         readonly string deathwatchHQUnitsQuery = "" +
-            "INSERT INTO Unit (Caption, Name, Type, ArmyOf) VALUES" +
+            "INSERT INTO Units (Caption, Name, Type, ArmyOf) VALUES" +
                         "('WatchMaster','Watch Master', 'HQ', 'Deathwatch')," +
                         "('Artemis', 'Watch Captain Artemis', 'HQ', 'Deathwatch')," +
                         "('WatchCaptain', 'Watch Captain', 'HQ', 'Deathwatch')," +
